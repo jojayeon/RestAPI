@@ -7,11 +7,17 @@
 </head>
 <body>
   <div id="root">
-    <p>얍!</p>
-
+    <div>
+      <p>날 누르라우!</p>
+    </div>
+    
   </div>
   <script>
     const xhr = new XMLHttpRequest();
+    const root = document.getElementById("root");
+    const ul = document.createElement("ul")
+    const divp = root.children[0]
+    
     
     const ajax = () => {
       const data = "https://jsonplaceholder.typicode.com/posts"
@@ -31,16 +37,18 @@
 
           console.log(typeof(a2))
 
-          const root = document.getElementById("root");
-
-          const btn = () => {
-            const ul = document.createElement("ul")
-            const li = document.createElement("li")
-            root.appendChild(ul)
-            ul.appendChild(li)
-            li.innerHTML = a3
+          divp.style.backgroundColor = "#7CB06D"
+          
+          divp.addEventListener("click", () => {
+            xhrdata.forEach((element) => {
+              let bodydata = element.body
+              const li = document.createElement("li")
+              root.appendChild(ul)
+              ul.appendChild(li)
+              li.innerHTML = bodydata
+            });
           }
-          p.addEventListener("click", btn());
+          );
           
         };
       });
