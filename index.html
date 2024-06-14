@@ -21,8 +21,20 @@
           console.dir(xhr);
           const xhrdata = JSON.parse(xhr.responseText);
           console.dir(xhrdata);
+          let a = xhrdata[0]
+          let a2 = xhrdata[0].id
+          console.dir(a);
+          console.dir(a2);
         };
       });
+      const root = document.getElementById("root");
+
+      const ul = document.createElement("ul")
+      const li = document.createElement("li")
+      // root.appendChild("ul")
+      ul.appendChild("li")
+
+
     };
 ajax()
 
