@@ -16,26 +16,15 @@
 
       xhr.open("GET", data, true)
       xhr.send()
-      console.log(xhr);
-      console.log(data);
       xhr.addEventListener("load", ()=>{
         if(xhr.status === 200) {
-          console.log(xhr);
-          console.log(data);
           console.dir(xhr);
-          console.dir(data);
-
-
           const xhrdata = JSON.parse(xhr.responseText);
-          console.log(xhrdata);
           console.dir(xhrdata);
         };
       });
-
-
-
     };
-
+ajax()
 
 
 
