@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +7,34 @@
 </head>
 <body>
   <div id="root"></div>
+  <p>123</p>
   <script>
     const xhr = new XMLHttpRequest();
-
+    
     const ajax = () => {
-      const data = "https://jsonplaceholder.typicode.com/"
+      const data = "https://jsonplaceholder.typicode.com/posts"
 
-      console.log(data);
       xhr.open("GET", data, true)
-      xhr.addEventListener("load", ()=>{})
+      xhr.send()
+      console.log(xhr);
+      console.log(data);
+      xhr.addEventListener("load", ()=>{
+        if(xhr.status === 200) {
+          console.log(xhr);
+          console.log(data);
+          console.dir(xhr);
+          console.dir(data);
+
+
+          const xhrdata = JSON.parse(xhr.responseText);
+          console.log(xhrdata);
+          console.dir(xhrdata);
+        };
+      });
 
 
 
-
-    }
+    };
 
 
 
