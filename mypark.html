@@ -1,0 +1,49 @@
+<!-- https://apis.data.go.kr/6300000/parkInfoDaejeonService/parkInfoDaejeonList?serviceKey=dpEPUK36yqhSZNgzBL5MGZgpiVG2Q12SzEbTGv0kFXlqDuOKTFrOvaih2%2BBHmcBEMp%2Fhqy5qSaLYvVAG%2Fw75pw%3D%3D& -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <p>날 누르라우!</p>
+    </div>
+  </div>
+  <script>
+    const xhr = new XMLHttpRequest();
+    const root = document.getElementById("root");
+    const ul = document.createElement("ul")
+    const divp = root.children[0]
+    divp.style.backgroundColor = "#7CB06D"
+    divp.style.textAlign = "center"
+    
+    const ajax = () => {
+      const data = "https://jsonplaceholder.typicode.com/posts"
+
+      xhr.open("POST", data, true)
+      xhr.send()
+      xhr.addEventListener("load", ()=>{
+        divp.addEventListener("click", () => {
+        if(xhr.status === 200) {
+          const xhrdata = JSON.parse(xhr.responseText);
+            xhrdata.forEach((element) => {
+              let bodydata = element.body //body, id, title, userid
+              const li = document.createElement("li")
+              root.appendChild(ul)
+              ul.appendChild(li)
+              li.innerHTML = bodydata
+            });
+          };
+        });
+      });
+    };
+    ajax()
+    </script>
+</body>
+</html>
+
+
