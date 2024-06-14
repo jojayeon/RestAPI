@@ -10,54 +10,50 @@
     <div>
       <p>날 누르라우!</p>
     </div>
-    
   </div>
   <script>
     const xhr = new XMLHttpRequest();
     const root = document.getElementById("root");
     const ul = document.createElement("ul")
     const divp = root.children[0]
-    
+    divp.style.backgroundColor = "#7CB06D"
+    divp.style.textAlign = "center"
     
     const ajax = () => {
       const data = "https://jsonplaceholder.typicode.com/posts"
 
-      xhr.open("GET", data, true)
+      xhr.open("POST", data, true)
       xhr.send()
       xhr.addEventListener("load", ()=>{
+        divp.addEventListener("click", () => {
         if(xhr.status === 200) {
-          console.dir(xhr);
           const xhrdata = JSON.parse(xhr.responseText);
-          console.dir(xhrdata);
-          let a = xhrdata[0]
-          let a2 = xhrdata[0].body
-          let a3 = xhrdata[0].id          
-          console.dir(a);
-          console.dir(a2);
-
-          console.log(typeof(a2))
-
-          divp.style.backgroundColor = "#7CB06D"
-          
-          divp.addEventListener("click", () => {
             xhrdata.forEach((element) => {
-              let bodydata = element.body
+              let bodydata = element.body //body, id, title, userid
               const li = document.createElement("li")
               root.appendChild(ul)
               ul.appendChild(li)
               li.innerHTML = bodydata
             });
-          }
-          );
-          
-        };
+          };
+        });
       });
-
     };
-ajax()
-
-
-
-  </script>
+    ajax()
+    
+    
+    // console.dir(xhrdata);
+    // let a = xhrdata[0]
+    // let a2 = xhrdata[0].body
+    // let a3 = xhrdata[0].id          
+    // console.dir(a);
+    // console.dir(a2);
+    
+    // console.log(typeof(a2))
+    // console.dir(divp)
+    
+    </script>
 </body>
 </html>
+
+
