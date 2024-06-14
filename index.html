@@ -8,7 +8,19 @@
 <body>
   <div id="root"></div>
   <script>
-    
+    const xhr = new XMLHttpRequest();
+
+    const ajax = () => {
+      const data = "https://jsonplaceholder.typicode.com/"
+
+      console.log(data);
+      xhr.open("GET", data, true)
+      xhr.addEventListener("load", ()=>{})
+
+
+
+
+    }
 
 
 
