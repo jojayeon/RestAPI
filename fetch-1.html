@@ -1,0 +1,35 @@
+<!--  fetch를 이해를 다 하지 못했지만 사용해보고 싶어서 우선 알아가면서 사용 -->
+<!-- 궁금해서 우선 가져와 지는 것만 확인 하고 싶어서 따라 써보기만 해보겠다. -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <p>날 누르라우!</p>
+    </div>
+  </div>
+  <script>
+    const root = document.getElementById("root");
+    const ul = document.createElement("ul")
+    const divp = root.children[0]
+    divp.style.backgroundColor = "#7CB06D"
+    divp.style.textAlign = "center"
+    
+    const ajax = () => {
+      const data = "https://jsonplaceholder.typicode.com/posts"
+
+      fetch(data)
+    	.then((res) => res.json()) 
+      .then((data) => console.log(data));
+    }    
+    ajax()
+    </script>
+</body>
+</html>
+
+
